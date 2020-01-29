@@ -1,5 +1,5 @@
 {
-	"name": "introduction-to-authentication",
+	"name": "using-json-web-tokens",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -9,20 +9,21 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/miugel/Introduction-to-Authentication.git"
+		"url": "git+https://github.com/miugel/Using-JSON-Web-Tokens.git"
 	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/miugel/Introduction-to-Authentication/issues"
+		"url": "https://github.com/miugel/Using-JSON-Web-Tokens/issues"
 	},
-	"homepage": "https://github.com/miugel/Introduction-to-Authentication#readme",
+	"homepage": "https://github.com/miugel/Using-JSON-Web-Tokens#readme",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"connect-session-knex": "^1.5.0",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-session": "^1.17.0",
+		"jsonwebtoken": "^8.5.1",
 		"knex": "^0.20.8",
 		"pg": "^7.17.1"
 	},

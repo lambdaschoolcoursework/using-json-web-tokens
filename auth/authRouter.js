@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Users = require('./model');
 const middleware = require('./middleware');
@@ -26,10 +27,8 @@ app.post('/login', (request, response) => {
     Users.find({username})
         .then(res => {
             if (res && bcrypt.compareSync(password, res.password)) {
-                request.session.userId = res.id;
-                request.session.loggedIn = true;
-                
-                response.status(200).json({message: 'logged in successfully', session: request.session});
+                const token = generateToken(res);
+                response.status(200).json({message: 'logged in successfully', session: request.session, token: token});
             } else {
                 response.status(500).json({message: 'invalid credentials'});
             };
@@ -38,22 +37,6 @@ app.post('/login', (request, response) => {
             response.status(500).json({message: 'error logging in user'});
             console.log(err);
         });
-});
-
-// logout
-app.get('/logout', (request, response) => {
-    if (request.session) {
-        request.session.destroy(err => {
-            if (err) {
-                response.status(500).json({message: '?'});
-            } else {
-                response.status(200).json({message: 'successfully logged out'});
-            };
-        });
-    } else {
-        response.status(204).json({message: 'session expired'})
-    };
-    // when would each of these happen?
 });
 
 // fetch all users
@@ -67,5 +50,20 @@ app.get('/users', middleware, (request, response) => {
             console.log(err);
         });
 });
+
+// generate token
+function generateToken(user) {
+    const payload = {
+        userId: user.id,
+        username: user.username
+    };
+
+    const options = {
+        expiresIn: '1d'
+    };
+
+    return jwt.sign(payload, process.env.SECRET, options);
+    // can place secret in seperate file and import
+};
 
 module.exports = app;
