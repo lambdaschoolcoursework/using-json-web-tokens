@@ -1,0 +1,32 @@
+{
+	"name": "introduction-to-authentication",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"server": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/miugel/Introduction-to-Authentication.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/miugel/Introduction-to-Authentication/issues"
+	},
+	"homepage": "https://github.com/miugel/Introduction-to-Authentication#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"connect-session-knex": "^1.5.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-session": "^1.17.0",
+		"knex": "^0.20.8",
+		"pg": "^7.17.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	}
+}
