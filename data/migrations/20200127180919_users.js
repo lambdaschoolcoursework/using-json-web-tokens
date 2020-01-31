@@ -6,6 +6,8 @@ exports.up = (knex, Promise) => {
 			.unique();
 		table.string('password')
 			.notNullable();
+		table.string('department')
+			.notNullable();
 	})
 };
 
